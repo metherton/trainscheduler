@@ -1,5 +1,10 @@
 *.class
 *.log
-./target/
-./project/
-./idea/
+target/
+project/
+idea/
+project/target/streams/compile/compileIncSetup/
+project/target/streams/compile/compileOutputs/
+target/scala-2.12/classes/com/
+target/scala-2.12/test-classes/com/
+target/streams/compile/compileOutputs/
