@@ -2,7 +2,7 @@
 *.log
 target/
 project/
-idea/
+.idea/
 project/target/streams/compile/compileIncSetup/
 project/target/streams/compile/compileOutputs/
 target/scala-2.12/classes/com/
