@@ -1,6 +1,6 @@
 package com.martinetherton.trainscheduler
 
-case class Train(number: Int, kind: String, schedule: Seq[(Time, Station)]) {
+case class Train(info: TrainInfo, schedule: Seq[(Time, Station)]) {
 
   require(schedule.size >= 2)
 

@@ -3,6 +3,8 @@ package com.martinetherton.trainscheduler
 import org.scalatest.{Matchers, WordSpec}
 import com.martinetherton.trainscheduler._
 
+
+
 class TimeTest extends WordSpec with Matchers {
 
   "com.martinetherton.trainscheduler.Time" should {
@@ -57,6 +59,13 @@ class TimeTest extends WordSpec with Matchers {
       val newTime = Time.apply(7, 55)
       newTime.hours shouldBe 7
       newTime.minutes shouldBe 55
+    }
+  }
+
+  "toString" should {
+    "format hours and minutes" in {
+      val newTime = Time(6, 45)
+      newTime.toString shouldEqual "06:45"
     }
   }
 }
