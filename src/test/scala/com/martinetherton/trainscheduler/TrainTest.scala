@@ -24,4 +24,11 @@ class TrainTest extends WordSpec with Matchers {
     }
   }
 
+  "timeAt" should {
+    "give time at Leeds" in {
+      val train = Train(BavarianRegional(), List((Time(4,30), Station("London")), (Time(5,45), Station("Leeds"))))
+      train.timeAt(Station("Leeds")) shouldEqual Some(Time(5,45))
+    }
+  }
+
 }
