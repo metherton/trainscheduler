@@ -15,8 +15,6 @@ class TrainTest extends WordSpec with Matchers {
     }
   }
 
-
-
   "stations" should {
     "get initialized correctly" in {
       val train = Train(BavarianRegional(), List((Time(4,30), Station("London")), (Time(5,45), Station("Leeds"))))
@@ -28,6 +26,12 @@ class TrainTest extends WordSpec with Matchers {
     "give time at Leeds" in {
       val train = Train(BavarianRegional(), List((Time(4,30), Station("London")), (Time(5,45), Station("Leeds"))))
       train.timeAt(Station("Leeds")) shouldEqual Some(Time(5,45))
+    }
+  }
+
+  "schedule" should {
+    "be increasing" in {
+      an [IllegalArgumentException] should be thrownBy Train(BavarianRegional(), List((Time(9,30), Station("London")), (Time(7,45), Station("Leeds"))))
     }
   }
 

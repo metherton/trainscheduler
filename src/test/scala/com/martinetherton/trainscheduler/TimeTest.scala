@@ -3,8 +3,6 @@ package com.martinetherton.trainscheduler
 import org.scalatest.{Matchers, WordSpec}
 import com.martinetherton.trainscheduler._
 
-
-
 class TimeTest extends WordSpec with Matchers {
 
   "com.martinetherton.trainscheduler.Time" should {
@@ -68,4 +66,42 @@ class TimeTest extends WordSpec with Matchers {
       newTime.toString shouldEqual "06:45"
     }
   }
+
+  "json conversion" should {
+    "work" in {
+      val convertedTime = Time(3, 15)
+      val newTime = Time(3, 15).toJson()
+      Time.fromJson(newTime) shouldEqual Some(Time(3,15))
+    }
+  }
+
+  "isIncreasing" should {
+    "be increasing" in {
+      val seq = Seq(Time(2, 35), Time(2, 50), Time(3, 40))
+      Time.isIncreasing(seq) shouldBe true
+    }
+  }
+
+  "isIncreasing" should {
+    "NOT be increasing" in {
+      val seq = Seq(Time(2, 35), Time(5, 50), Time(3, 40))
+      Time.isIncreasing(seq) shouldBe false
+    }
+  }
+
+  "isIncreasingSliding" should {
+    "be increasing" in {
+      val seq = Seq(Time(2, 35), Time(5, 50), Time(8, 40))
+      Time.isIncreasingSliding(seq) shouldBe true
+    }
+  }
+
+  "isIncreasingSliding" should {
+    "NOT be increasing" in {
+      val seq = Seq(Time(2, 35), Time(5, 50), Time(3, 40))
+      Time.isIncreasingSliding(seq) shouldBe false
+    }
+  }
+
+
 }
