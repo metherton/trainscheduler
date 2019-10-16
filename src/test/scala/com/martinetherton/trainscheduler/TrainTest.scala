@@ -35,4 +35,28 @@ class TrainTest extends WordSpec with Matchers {
     }
   }
 
+  "backToBackStations" should {
+    "contain pairs" in {
+      val testTrain = new Train( BavarianRegional(), Seq(
+        (Time(4, 30), Station("london")),
+        (Time(6, 30), Station("leeds")),
+        (Time(8, 30), Station("sheffield")),
+        (Time(9, 30), Station("birmingham"))))
+      testTrain.backToBackStations shouldEqual Seq((Station("london"), Station("leeds")),
+        (Station("leeds"), Station("sheffield")),
+        (Station("sheffield"), Station("birmingham")))
+    }
+  }
+
+  "departureTimes" should {
+    "map stations to times" in {
+      val testTrain = new Train( BavarianRegional(), Seq(
+        (Time(4, 30), Station("london")),
+        (Time(6, 30), Station("leeds")),
+        (Time(8, 30), Station("sheffield")),
+        (Time(9, 30), Station("birmingham"))))
+      testTrain.departureTimes shouldEqual Map(Station("london") -> Time(4, 30), Station("leeds") -> Time(6, 30), Station("sheffield") -> Time(8, 30), Station("birmingham") -> Time(9, 30))
+    }
+  }
+
 }

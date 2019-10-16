@@ -11,6 +11,9 @@ case class Train(info: TrainInfo, schedule: Seq[(Time, Station)]) {
 
   val stations = schedule.map(slot => slot._2)
 //  val stations = myMap(schedule, c, Nil)
+  val backToBackStations: Seq[(Station, Station)] = stations zip stations.tail
+
+  val departureTimes: Map[Station, Time] = schedule.map(slot => (slot._2, slot._1)).toMap
 
   def myMap(slots: Seq[(Time, Station)], f: ((Time, Station)) => Station, acc: Seq[Station]): Seq[Station] = slots match {
     case Nil => acc
