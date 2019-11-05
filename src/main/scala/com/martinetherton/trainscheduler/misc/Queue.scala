@@ -8,7 +8,7 @@ object Queue {
 
 }
 
-class Queue[A] private (val elements: Seq[A]) {
+class Queue[+A] private (val elements: Seq[A]) {
 
   override def equals(o: Any): Boolean = o match {
     case that: A => that == o
@@ -25,4 +25,7 @@ class Queue[A] private (val elements: Seq[A]) {
     case Nil => throw new UnsupportedOperationException
     case head :: tail => (head ,new Queue(tail))
   }
+
+  def enqueue(a: A): Queue[A]
+
 }
