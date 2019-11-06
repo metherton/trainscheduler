@@ -26,6 +26,5 @@ class Queue[+A] private (val elements: Seq[A]) {
     case head :: tail => (head ,new Queue(tail))
   }
 
-  def enqueue(a: A): Queue[A]
 
 }
