@@ -103,5 +103,11 @@ class TimeTest extends WordSpec with Matchers {
     }
   }
 
+  "implicit convert" should {
+    "convert string to time" in {
+      val newTime: Time = "5:25"
+      newTime.asMinutes shouldBe 325
+    }
+  }
 
 }

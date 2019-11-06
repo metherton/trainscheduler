@@ -28,6 +28,13 @@ object Time {
   def isIncreasingSliding(times: Seq[Time]): Boolean =
     (times sliding 2).forall((x) => x(0).asMinutes <= x(1).asMinutes)
 
+  implicit def stringToTime(s: String): Time = {
+    val time = """(\d{1,2}):(\d{1,2})""".r
+    val time(hour, minute) = s
+    Time(hour.toInt, minute.toInt)
+  }
+
+
 }
 
 case class Time(hours: Int = 0, minutes: Int = 0) extends Ordered[Time] {
